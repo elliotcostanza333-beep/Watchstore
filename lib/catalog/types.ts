@@ -1,1 +1,1 @@
-export type Watch={id:string;ean?:string;manufacturerRef?:string;brand:string;name:string;slug:string;gender:"homme"|"femme"|"junior"|"unisex";movement?:string;price:number;compareAtPrice?:number;stock:number;images:string[];supplier:"WWT";supplierSku:string;updatedAt:string};
+export type Supplier="PRINTFUL";export type CatalogProduct={id:string;name:string;slug:string;price:number;stock:number;images:string[];supplier:Supplier;supplierSku:string;updatedAt:string};
