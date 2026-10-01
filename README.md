@@ -1,16 +1,21 @@
-# Watchstore
-
-Base e-commerce indépendante pour un catalogue de montres en dropshipping.
+# WOOF.
+Boutique e-commerce indépendante d’accessoires personnalisés pour chiens, connectée à Printful.
 
 ## Architecture
-- Next.js / TypeScript
-- Frontend responsive
-- Couche catalogue indépendante du fournisseur
-- Adaptateur WWT isolé dans lib/suppliers/wwt.ts
-- Secrets uniquement via variables d'environnement
+- Next.js 14 / TypeScript
+- Catalogue Printful lu directement via Catalog API
+- Revalidation automatique toutes les heures
+- Panier client interactif
+- Architecture prévue pour Private Token, Orders API et webhooks
+- Aucun secret dans Git
 
-## État
-La vitrine initiale est prête. Le catalogue WWT réel reste volontairement désactivé tant que les accès et le format du flux fournisseur ne sont pas confirmés. Aucun faux produit n'est injecté en production.
+## Catalogue
+Le storefront interroge l’API Printful, filtre la niche animaux et récupère les variantes réelles. Le catalogue public peut être lu sans token dans les limites Printful.
+
+## Passage en vente réelle
+Créer une boutique Manual order platform/API dans Printful, puis un Private Token avec les scopes nécessaires. Le token sera injecté côté serveur via PRINTFUL_TOKEN, jamais exposé au navigateur ni commité.
+
+Le checkout reste volontairement verrouillé tant que le compte marchand et le paiement ne sont pas reliés : aucune fausse commande ne peut partir.
 
 ## Lancer
 npm install
